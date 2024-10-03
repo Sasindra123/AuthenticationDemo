@@ -1,0 +1,50 @@
+{% extends 'layouts/app.html' %} {% block content %}
+<div class="row justify-content-center">
+  <div class="col-sm-6">
+    <div class="card mt-5 border border-dark">
+      <div class="card-header bg-dark text-light">
+        <h2 class="text-center mb-0">Login</h2>
+      </div>
+      <div class="card-body">
+        {% if form.non_field_errors %}
+        <small class="text-danger"> {{ form.non_field_errors.as_ul }} </small>
+        {% endif %}
+
+        <form method="POST" action="{% url 'login' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="{{form.username.id_for_label}}" class="font-weight-bold"
+              >Username :</label
+            >
+            <input
+              type="text"
+              name="{{form.username.name}}"
+              class="form-control border border-dark input-sm"
+            />
+            <span class="text-danger">{{form.username.errors}}</span>
+          </div>
+
+          <div class="form-group">
+            <label for="{{form.password.id_for_label}}" class="font-weight-bold"
+              >Password :</label
+            >
+            <input
+              type="password"
+              name="{{form.password.name}}"
+              class="form-control border border-dark input-sm"
+            />
+            <span class="text-danger">{{form.password.errors}}</span>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-dark btn-sm">Login</button>
+            <a href="{% url 'register' %}" class="btn btn-outline-dark btn-sm"
+              >Create a new account ?</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

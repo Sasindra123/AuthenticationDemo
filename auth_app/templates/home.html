@@ -1,0 +1,30 @@
+{% extends 'layouts/app.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <style>
+      body {
+        color: rgb(7, 33, 56);
+        font-style: "Rubik", sans-serif;
+        background-image: url("static/images/pexels-kehn-hermano-3816807.jpg");
+        background-size: cover;
+        background-repeat: ss no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Welcome to Django Server</h1>
+      <h4>
+        Sign-Up Now 👉
+        <a href="{% url 'login' %}">Click Here</a>
+      </h4>
+    </div>
+  </body>
+</html>
+
+{% endblock %}

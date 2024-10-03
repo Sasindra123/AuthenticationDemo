@@ -1,0 +1,65 @@
+{% extends 'layouts/app.html' %} {% block content %}
+<div class="row justify-content-center">
+  <div class="col-sm-6">
+    <div class="card mt-5 border border-success">
+      <div class="card-header bg-success text-light">
+        <h2 class="text-center mb-0">Register</h2>
+      </div>
+      <div class="card-body animate__animated animate__fadeIn">
+        <!-- Added animation classes -->
+        <form method="POST" action="{% url 'register' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="{{form.username.id_for_label}}" class="font-weight-bold"
+              >Username:</label
+            >
+            <input
+              type="text"
+              name="{{form.username.name}}"
+              class="form-control border border-success input-sm"
+            />
+            <span class="text-danger">{{form.username.errors}}</span>
+          </div>
+
+          <div class="form-group">
+            <label
+              for="{{form.password1.id_for_label}}"
+              class="font-weight-bold"
+              >Password:</label
+            >
+            <input
+              type="password"
+              name="{{form.password1.name}}"
+              class="form-control border border-success input-sm"
+            />
+            <span class="text-danger">{{form.password1.errors}}</span>
+          </div>
+
+          <div class="form-group">
+            <label
+              for="{{form.password2.id_for_label}}"
+              class="font-weight-bold"
+              >Confirm Password:</label
+            >
+            <input
+              type="password"
+              name="{{form.password2.name}}"
+              class="form-control border border-success input-sm"
+            />
+            <span class="text-danger">{{form.password2.errors}}</span>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-success mr-2 btn-sm">
+              Submit
+            </button>
+            <a href="{% url 'login' %}" class="btn btn-outline-success btn-sm"
+              >Login</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
